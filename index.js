@@ -1,6 +1,6 @@
 const axios = require('axios');
 const url = 'https://minesweeper-api-mdz.herokuapp.com';
-//const url = 'http://localhost:3000';
+const url = 'http://localhost:3000';
 
 const instance = axios.create({
   baseURL: url,
@@ -26,8 +26,9 @@ function get_games(user_name) {
 
 function print_game(game){
   console.log("Name:", game.name);
-  console.log("Usuario:", game.user.name);
-  console.log("Estado:", game.status);
+  console.log("User Name:", game.user.name);
+  console.log("Status:", game.status);
+  console.log(`Time: ${game.time} hh:mm`)
   console.table(game.view_map);
   console.log("_________________________________________________________________________________");
 };
@@ -56,9 +57,9 @@ function create(name, max_x, max_y, amount_of_mines, user_name){
    })
 }
 
-function click(name, x,y){
+function game_action(action, name){
   instance.patch(`/minesweepers/${name}`,{
-    x,y, perform: 'click'
+    perform: action
   }).then(response => {
     print_game(response.data.game);
   }).catch(error => {
@@ -66,15 +67,16 @@ function click(name, x,y){
   })
 };
 
-function flag(name, x,y){
+function cell_action(action, name, x,y){
   instance.patch(`/minesweepers/${name}`,{
-    x,y,perform: 'flag'
+    x,y,perform: action
   }).then(response => {
     print_game(response.data.game);
   }).catch(error => {
     console.log(error.response.data);
   })
 };
+
 //console.log(process.argv);
 
 if (process.argv.length > 2){
@@ -89,6 +91,14 @@ if (process.argv.length > 2){
     create(game_name,max_x, max_y, mines, user_name)
   }
 
+  if (command == "stop") {
+    game_action('stop', game_name);
+  }
+
+  if (command == "play") {
+    game_action('play', game_name);
+  }
+
   if (command == "list"){
     get_games(user_name);
   }
@@ -98,11 +108,11 @@ if (process.argv.length > 2){
   }
 
   if (command == "click"){
-    click(game_name, max_x, max_y);
+    cell_action('click', game_name, max_x, max_y);
   }
 
   if (command == "flag"){
-    flag(game_name, max_x, max_y);
+    cell_action('flag', game_name, max_x, max_y);
   }
 
 }

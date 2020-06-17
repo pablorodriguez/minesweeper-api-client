@@ -16,9 +16,11 @@ This are the available commandsto run
 
 1. node index.js list USER_NAME => To get the list of games for a ser
 2. node index.js start USER_NAME GAME_NAME X Y AMOUNT_OF_MINE => To create a new game for a user
-3. node index.js show USER_NAME GAME_NAME => to show a specific game
-4. node index.js click USER_NAME GAME_NAME X Y => to click over a cell in a game
-5. node index.js flag USER_NAME GAME_NAME X Y => to add a flag over a cell in a game
+3. node index.js stop GAME_NAME => To stop playing the game
+4. node index.js play GAME_NAME => To start playing the game
+5. node index.js show USER_NAME GAME_NAME => to show a specific game
+6. node index.js click USER_NAME GAME_NAME X Y => to click over a cell in a game
+7. node index.js flag USER_NAME GAME_NAME X Y => to add a flag over a cell in a game
 
 # Notes
 This is not what I would expect for real life API Client, I code this because I try to use a different languge from the Server Side
