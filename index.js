@@ -1,6 +1,6 @@
 const axios = require('axios');
 const url = 'https://minesweeper-api-mdz.herokuapp.com';
-//const url = 'http://localhost:3000/minesweepers.json';
+//const url = 'http://localhost:3000';
 
 const instance = axios.create({
   baseURL: url,
@@ -20,7 +20,7 @@ function get_games(user_name) {
       }
     })
     .catch(error => {
-      console.log(error);
+      console.log(error.response.data);
     });
 }
 
@@ -38,7 +38,7 @@ function show_game(game_name){
     print_game(response.data.game);
   })
   .catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   });
 }
 
@@ -52,7 +52,7 @@ function create(name, max_x, max_y, amount_of_mines, user_name){
    }).then(response => {
     print_game(response.data.game);
    }).catch(error => {
-     console.log(error);
+     console.log(error.response.data);
    })
 }
 
@@ -62,7 +62,7 @@ function click(name, x,y){
   }).then(response => {
     print_game(response.data.game);
   }).catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   })
 };
 
@@ -72,7 +72,7 @@ function flag(name, x,y){
   }).then(response => {
     print_game(response.data.game);
   }).catch(error => {
-    console.log(error);
+    console.log(error.response.data);
   })
 };
 //console.log(process.argv);
