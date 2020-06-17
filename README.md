@@ -1,1 +1,20 @@
 # minesweeper-api-client
+
+# How to install and run Minesweepers from a Terminal
+clone this repo
+`git@github.com:pablorodriguez/minesweeper-api-client.git`
+`run npm install`
+
+# List of command to paly Minesweepers Game
+Comman pattern
+`node index.js COMMAND_NAME PARAMS`
+To list games for a specific user run this
+
+# Open a terminal
+This are the available commandsto run
+
+1. node index.js list USER_NAME => To get the list of games for a ser
+2. node index.js start USER_NAME GAME_NAME X Y AMOUNT_OF_MINE => To create a new game for a user
+3. node index.js show USER_NAME GAME_NAME => to show a specific game
+4. node index.js click USER_NAME GAME_NAME X Y => to click over a cell in a game
+5. node index.js flag USER_NAME GAME_NAME X Y => to add a flag over a cell in a game
