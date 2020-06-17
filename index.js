@@ -28,7 +28,7 @@ function print_game(game){
   console.log("Name:", game.name);
   console.log("User Name:", game.user.name);
   console.log("Status:", game.status);
-  console.log(`Time: ${game.time} hh:mm`)
+  console.log(`Time: ${game.time} mm:ss`)
   console.table(game.view_map);
   console.log("_________________________________________________________________________________");
 };
