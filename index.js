@@ -1,6 +1,6 @@
 const axios = require('axios');
 const url = 'https://minesweeper-api-mdz.herokuapp.com';
-const url = 'http://localhost:3000';
+//const url = 'http://localhost:3000';
 
 const instance = axios.create({
   baseURL: url,
